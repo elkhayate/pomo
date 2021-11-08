@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+import { ContextTime } from '../contexts/ContextTime';
 export default class Timer extends Component {
     constructor(props) {
         super(props)
@@ -13,6 +13,7 @@ export default class Timer extends Component {
             speed : 300 / (this.props.Minutes * 60)
         }
     }
+    static contextType = ContextTime;
     onStart = () => {
         if(this.state.seconds > 0){
             this.setState({
@@ -21,6 +22,7 @@ export default class Timer extends Component {
             this.setState({
                 width : this.state.width + Math.floor(this.state.speed)
             })
+            this.context.handleData(this.state.width)
         }else {
             if(this.state.minutes > 0) {
                 this.setState({
@@ -32,6 +34,7 @@ export default class Timer extends Component {
                 this.setState({
                     width : this.state.width + Math.floor(this.state.speed)
                 })
+                this.context.handleData(this.state.width)
             }else {
                 this.onPause();
                 this.setState({
