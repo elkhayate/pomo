@@ -103,9 +103,13 @@ export default class Timer extends Component {
                 <Counter>{`${Minutes > 9 ? Minutes : `0${Minutes}`} : ${Seconds > 9 ? Seconds : `0${Seconds}`}`}</Counter>
                 {
                     s.counting ?
-                    <Stop onClick={this.handleStop}>stop</Stop>
+                    <Stop 
+                        Display = {this.context.Which}
+                        onClick={this.handleStop}>stop</Stop>
                     :
-                    <Start onClick={this.handleStart}>start</Start>
+                    <Start 
+                        Display = {this.context.Which}
+                        onClick={this.handleStart}>start</Start>
                 }
                 <h1>{this.context.Which}</h1>
             </Container>
@@ -150,9 +154,43 @@ const Counter = styled.h1`
 `;
 
 const Start = styled.button`
-
+    cursor: pointer;
+    border: medium none;
+    margin: 20px 0px 0px;
+    padding: 0px 12px;
+    border-radius: 4px;
+    box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+    font-size: 22px;
+    height: 55px;
+    font-weight: bold;
+    width: 200px;
+    background-color: white;
+    transition: color 0.5s ease-in-out 0s;
+    color:${props => 
+            props.Display === 'pomo' && 'rgb(217, 85, 80)' 
+            || props.Display === 'long' && 'rgb(69, 124, 163)' 
+            || props.Display === 'short' && 'rgb(76, 145, 149)'
+    };
 `;
 
 const Stop = styled.button`
+    cursor: pointer;
+    border: medium none;
+    margin: 20px 0px 0px;
+    padding: 0px 12px;
+    border-radius: 4px;
+    font-size: 22px;
+    height: 55px;
+    font-weight: bold;
+    width: 200px;
+    background-color: white;
+    transform: translateY(6px);
+    box-shadow: none;
+    transition: color 0.5s ease-in-out 0s;
+    color:${props => 
+            props.Display === 'pomo' && 'rgb(217, 85, 80)' 
+            || props.Display === 'long' && 'rgb(69, 124, 163)' 
+            || props.Display === 'short' && 'rgb(76, 145, 149)'
+    };
 `;
 
