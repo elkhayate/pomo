@@ -89,15 +89,15 @@ export default class Timer extends Component {
                 <Modes>
                     <Mode 
                         Display={this.context.Which === 'pomo'}
-                        onClick={()=>this.context.handleWhich('pomo')}
+                        onClick={()=>{this.context.handleWhich('pomo');}}
                     >pomodoro</Mode>
                     <Mode 
                         Display={this.context.Which === 'short'}
-                        onClick={()=>this.context.handleWhich('short')}
+                        onClick={()=>{this.context.handleWhich('short');}}
                     >short break</Mode>
                     <Mode 
                         Display={this.context.Which === 'long'}
-                        onClick={()=>this.context.handleWhich('long')}
+                        onClick={()=>{this.context.handleWhich('long');}}
                     >long break</Mode>
                 </Modes>
                 <Counter>{`${Minutes > 9 ? Minutes : `0${Minutes}`} : ${Seconds > 9 ? Seconds : `0${Seconds}`}`}</Counter>
